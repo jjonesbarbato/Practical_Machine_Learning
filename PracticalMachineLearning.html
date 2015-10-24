@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -214,7 +214,7 @@ confusionMatrix(as.factor(model_2.pred$class), testing$classe)</code></pre>
 <b>Model 3 - Random Forest </b>
 </h3>
 <p>The final model that I developed was a Random Forest Model and was the one that I expected to have the highest accuracy. This is based on the fact that while it also creates multiple predictions for each of the observations it uses a random feature selection approach when developing the tree and uses the strongest selection at each branch.</p>
-<p>I created two random forest models, one using the caret package with 3-fold cross validation specified and the second using the randomForest package selecting 100 trees and using a tuned mtry value.</p>
+<p>I created two random forest models, one using the caret package with 5-fold cross validation specified and the second using the randomForest package selecting 100 trees and using a tuned mtry value.</p>
 <p>Below are the models and the confusion matrices which highlight their accuracy.</p>
 <pre class="r"><code>model_3_caret&lt;-train(classe~., data=training, method=&quot;rf&quot;, 
                trControl=trainControl(method=&quot;cv&quot;, number=3), 
@@ -253,6 +253,7 @@ confusionMatrix(model_3_caret.pred, testing$classe)</code></pre>
 ## Detection Prevalence   0.2853   0.1920   0.1762   0.1630   0.1835
 ## Balanced Accuracy      0.9994   0.9939   0.9941   0.9943   0.9991</code></pre>
 <p>The accuracy of this model based on the confusion matrix is: <b>0.9944</b> The corresponding out of sample error is <b>.0056</b> or <b>0.56%</b>.</p>
+<p>Below is the second random forest model.</p>
 <pre class="r"><code># Use the tuneRF function to determine an ideal value for the mtry parameter
 mtry &lt;- tuneRF(training[,1:51], training[,52], mtryStart=1, ntreeTry=100, stepFactor=2, improve=0.05,trace=TRUE, plot=TRUE, doBest=FALSE)</code></pre>
 <pre><code>## mtry = 1  OOB error = 1.57% 

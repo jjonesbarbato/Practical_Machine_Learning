@@ -176,6 +176,8 @@ confusionMatrix(model_3_caret.pred, testing$classe)
 The accuracy of this model based on the confusion matrix is: <b>0.9944</b> The 
 corresponding out of sample error is <b>.0056</b> or <b>0.56%</b>.
 
+Below is the second random forest model. 
+
 ```{r}
 
 
@@ -190,8 +192,8 @@ model_3_rf.pred <- predict(model_3_rf, testing, type="response")
 confusionMatrix(model_3_rf.pred, testing$classe)
 ```
 
-The accuracy of this model based on the confusion matrix is: <b>0.9952</b> The 
-corresponding out of sample error is <b>.0048</b> or <b>0.48%</b>.  The following plot
+The accuracy of this model based on the confusion matrix is: <b>0.9961</b> The 
+corresponding out of sample error is <b>.0039</b> or <b>0.39%</b>.  The following plot
 shows the top 15 features that are most important to the analysis. 
 
 ```{r}
